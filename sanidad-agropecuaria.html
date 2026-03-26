@@ -170,8 +170,67 @@ footer{background:var(--ink);padding:5rem 3rem 2.5rem;}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
+.ftg{grid-template-columns:1fr 1fr;gap:2.5rem;}}
+.cs{padding:2.5rem;flex-direction:column;}}
+
+/* ── HAMBURGER ── */
+.hamburger{display:none;flex-direction:column;justify-content:center;align-self:center;gap:5px;width:40px;height:40px;cursor:pointer;padding:4px;background:none;border:none;z-index:600;margin-left:auto;flex-shrink:0;}
+.hamburger span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:all .3s var(--ease);}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--white);z-index:550;overflow-y:auto;flex-direction:column;padding:90px 2rem 2rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);padding:1rem 0;border-bottom:1px solid var(--border);display:block;text-decoration:none;transition:color .2s;}
+.mobile-menu a:last-child{border-bottom:none;}
+.mobile-menu a:hover{color:var(--mid);}
+.mobile-menu .sub{padding-left:1rem;}
+.mobile-menu .sub a{font-size:1.1rem;font-weight:600;color:var(--muted);}
+.mobile-menu .cta{margin-top:1.5rem;background:var(--mid);color:var(--white)!important;padding:.8rem 1.5rem!important;border-radius:.3rem;border:none!important;text-align:center;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(5,17,31,.5);z-index:540;}
+.overlay.open{display:block;}
+/* ── TABLET ≤1100px ── */
 @media(max-width:1100px){.wrap,.nav-in,.ph{padding-left:1.5rem;padding-right:1.5rem;}.ftg{grid-template-columns:1fr 1fr;gap:2.5rem;}}
-@media(max-width:700px){.ftg,.f2{grid-template-columns:1fr;}.cs{padding:2.5rem;flex-direction:column;}}
+/* ── MÓVIL ≤768px ── */
+@media(max-width:768px){
+  .topbar{font-size:.55rem;padding:.3rem .8rem;}
+  .nav-in{padding:0 1rem;height:64px;align-items:center;}
+  .nm,.nc-w{display:none!important;}
+  .hamburger{display:flex;}
+  .nb img{height:40px;}
+  .nb-name{font-size:.88rem;}
+  .nb-sub{display:none;}
+  .ph{padding:4rem 1rem 3rem;}
+  .ph h1{font-size:clamp(2.2rem,10vw,3.5rem);}
+  .ph-d{font-size:.9rem;}
+  .ph-pills{display:none;}
+  .wrap{padding:0 1rem;}
+  .sec{padding:3.5rem 0;}
+  .ftg,.f2{grid-template-columns:1fr;}
+  div[style*="grid-template-columns:1fr 1fr"]{display:block!important;}
+  div[style*="grid-template-columns:1fr 1fr"]>*{margin-bottom:2rem;}
+  .cs{padding:2rem 1.2rem;flex-direction:column;gap:1.2rem;margin-top:2rem;}
+  .cs h3{font-size:1.3rem;}
+  .cs .btn{width:100%;justify-content:center;}
+  footer{padding:3rem 1rem 2rem;}
+  .ftg{gap:1.5rem;}
+  .mw iframe{height:240px;}
+  .wa-b::before{display:none;}
+  h2.hd{font-size:clamp(1.8rem,7vw,2.8rem);}
+  .bt{font-size:.9rem;}
+}
+/* ── MÓVIL PEQUEÑO ≤480px ── */
+@media(max-width:480px){
+  .nav-in{padding:0 .8rem;height:58px;align-items:center;}
+  .nb-name{font-size:.8rem;}
+  .ph{padding:3rem .8rem 2.5rem;}
+  .wrap{padding:0 .8rem;}
+  .cf{padding:1.5rem 1rem;}
+  .ci{padding:.9rem 1rem;}
+  .cs{padding:1.5rem 1rem;}
+  .topbar{display:none;}
+}
+
 </style>
 </head><body>
 <div class="topbar">
@@ -203,8 +262,25 @@ footer{background:var(--ink);padding:5rem 3rem 2.5rem;}
       </div>
     </li>
     <li class="nc-w"><a class="nc-btn" href="contacto.html">Contacto</a></li>
-  </ul>
+    </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </div></nav>
+<div class="overlay" id="overlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Inicio</a>
+  <a href="identidad.html">Identidad</a>
+  <a href="acreditaciones.html">Acreditaciones</a>
+  <a href="servicios.html" style="border-bottom:none;">Servicios</a>
+  <div class="sub">
+    <a href="agua-residual.html">Agua Residual</a>
+    <a href="sanidad-agropecuaria.html">Sanidad Agropecuaria</a>
+    <a href="lodos-biosolidos.html">Lodos y Biosólidos</a>
+    <a href="alimentos.html">Alimentos</a>
+  </div>
+  <a href="contacto.html" class="cta">Contacto</a>
+</div>
 <div class="ph"><div class="ph-ln"></div><div class="ph-in"><div class="bc"><a href="index.html">Inicio</a><span class="s">/</span><a href="servicios.html">Servicios</a><span class="s">/</span>Sanidad Agropecuaria</div><h1>Sanidad Agropecuaria</h1><p class="ph-d">Evaluación analítica microbiológica, fisicoquímica y bromatológica para el sector agropecuario.</p></div></div></div>
 <section class="sec"><div class="wrap">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:4rem;">
@@ -342,6 +418,21 @@ footer{background:var(--ink);padding:5rem 3rem 2.5rem;}
   document.querySelectorAll('.count').forEach(el=>co.observe(el));
   const p=location.pathname.split('/').pop()||'index.html';
   document.querySelectorAll('#nav a').forEach(a=>{if(a.getAttribute('href')===p)a.classList.add('active');});
+  /* Hamburger menu */
+  const hbg=document.getElementById('hamburger');
+  const menu=document.getElementById('mobileMenu');
+  const ovl=document.getElementById('overlay');
+  function toggleMenu(open){
+    hbg.classList.toggle('open',open);
+    menu.classList.toggle('open',open);
+    ovl.classList.toggle('open',open);
+    hbg.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  }
+  hbg.addEventListener('click',()=>toggleMenu(!menu.classList.contains('open')));
+  ovl.addEventListener('click',()=>toggleMenu(false));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
 })();
 </script>
 </body></html>
