@@ -240,7 +240,8 @@ footer{background:var(--ink);padding:5rem 3rem 2.5rem;}
 }
 
 @media(max-width:768px){
-  .grid4{grid-template-columns:1fr 1fr!important;overflow:hidden;}
+  .grid4{grid-template-columns:1fr 1fr!important;}
+  .grid4 h2,.grid4 [class*="st-"]{font-size:clamp(1.5rem,8vw,3rem)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .grid3img{grid-template-columns:1fr!important;grid-template-rows:auto!important;}
   .grid2{grid-template-columns:1fr!important;gap:2rem!important;}
 }
